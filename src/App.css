@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+body {
+  /*background-color: darkslateblue;*/
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -31,4 +34,7 @@
   to {
     transform: rotate(360deg);
   }
+}
+#quiz-container{
+  /*background-color: black;*/
 }

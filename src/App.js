@@ -1,13 +1,13 @@
 
 import './App.css';
 import {GameBanner} from "./components/gameBanner";
-import {QuizQuestions} from "./components/quizQuestions";
+import {CocktailSearch} from "./components/cocktailSearch";
 
 function App() {
   return (
-    < div className="App">
+    <div className="App">
     <GameBanner/>
-      <QuizQuestions/>
+      <CocktailSearch/>
     </div>
   );
 }

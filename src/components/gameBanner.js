@@ -1,9 +1,9 @@
 import React from 'react';
+import {CocktailSearch} from "./cocktailSearch";
 export const GameBanner = () => {
     return (
         <div id="quiz-container">
-        <h1>Quiz App</h1>
-        <p id="score"></p>
+        <h1>Cocktail Search </h1>
     </div>
     )
 }
