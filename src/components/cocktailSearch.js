@@ -64,6 +64,20 @@ export const CocktailSearch = () => {
             .catch((error) => console.log(error));
     };
 
+    const searchCocktailByGlass = (glass) => {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glass}`)
+            .then((response) => response.json())
+            .then((data) => setCocktails(data.drinks))
+            .catch((error) => console.log(error));
+    };
+
+    const searchCocktailByChampagneGlass = (glass) => {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glass}`)
+            .then((response) => response.json())
+            .then((data) => setCocktails(data.drinks))
+            .catch((error) => console.log(error));
+    };
+
     const handleSearchByName = () => {
         searchCocktailByName();
     };
@@ -84,6 +98,15 @@ export const CocktailSearch = () => {
         searchCocktailByFirstLetter(letter);
     };
 
+    const handleSearchByGlass = () => {
+        searchCocktailByGlass("Cocktail_glass");
+    };
+
+    const handleSearchCocktailByChampagneGlass = () => {
+        searchCocktailByChampagneGlass("Champagne_flute");
+    };
+
+
     return (
         <div>
             <div>
@@ -97,6 +120,8 @@ export const CocktailSearch = () => {
                         {String.fromCharCode(65 + index)}
                     </button>
                 ))}
+                <button onClick={handleSearchByGlass}>Cocktail Glass</button>
+                <button onClick={handleSearchCocktailByChampagneGlass}>Champagne flute</button>
             </div>
             {error ? (
                 <div>Whoops, try a different name</div>
