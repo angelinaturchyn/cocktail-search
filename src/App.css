@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Pacifico', cursive;
 }
 
 body {
@@ -35,6 +36,15 @@ body {
     transform: rotate(360deg);
   }
 }
-#quiz-container{
-  /*background-color: black;*/
+
+.homeImg {
+  height: auto;
+  width: 100%;
+}
+
+.bannerText{
+  font-size: 2rem;
+  margin-top: 120px;
+  margin-bottom: 120px;
+
 }

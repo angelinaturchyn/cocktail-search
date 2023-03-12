@@ -20,19 +20,78 @@ export const WhatCocktailCanIMake = () => {
         )}`;
 
         fetch(apiUrl)
-            .then((response) => response.json())
-            .then((data) => setCocktails(data.drinks));
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then((text) => {
+                if (text) {
+                    const data = JSON.parse(text);
+                    setCocktails(data.drinks);
+                } else {
+                    console.log('Empty response from server');
+                }
+            })
+            .catch((error) => console.error('Error fetching data:', error));
     }, [selectedIngredients]);
 
     const handleIngredientClick = (ingredient) => {
         const newSelectedIngredients = [...selectedIngredients, ingredient];
         setSelectedIngredients(newSelectedIngredients);
+
+        const ingredientsString = newSelectedIngredients.map(
+            (ingredient) => ingredient.strIngredient1
+        );
+        const apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredientsString.join(
+            ","
+        )}`;
+
+        fetch(apiUrl)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then((text) => {
+                if (text) {
+                    const data = JSON.parse(text);
+                    setCocktails(data.drinks);
+                } else {
+                    console.log('Empty response from server');
+                }
+            })
+            .catch((error) => console.error('Error fetching data:', error));
     };
 
     const handleRemoveIngredient = (index) => {
         const newIngredients = [...selectedIngredients];
         newIngredients.splice(index, 1);
         setSelectedIngredients(newIngredients);
+
+        const ingredientsString = newIngredients.map(
+            (ingredient) => ingredient.strIngredient1
+        );
+        const apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredientsString.join(",")}`;
+
+        fetch(apiUrl)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then((text) => {
+                if (text) {
+                    const data = JSON.parse(text);
+                    setCocktails(data.drinks);
+                } else {
+                    console.log('Empty response from server');
+                }
+            })
+            .catch((error) => console.error('Error fetching data:', error));
     };
 
     const getMissingIngredients = (cocktail) => {
@@ -73,6 +132,7 @@ export const WhatCocktailCanIMake = () => {
                 {cocktails.map((cocktail) => {
                     const missingIngredients = getMissingIngredients(cocktail);
                     const missingCount = missingIngredients.length;
+                    const isReadyToMix = missingCount === 0;
                     return (
                         <li key={cocktail.idDrink}>
                             {cocktail.strDrink}{" "}
@@ -83,4 +143,5 @@ export const WhatCocktailCanIMake = () => {
             </ul>
         </div>
     );
+
 };
