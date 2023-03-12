@@ -4,6 +4,7 @@ export const CocktailSearch = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [cocktails, setCocktails] = useState([]);
     const [error, setError] = useState("");
+    const [selectedFirstLetter, setSelectedFirstLetter] = useState("");
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -115,11 +116,19 @@ export const CocktailSearch = () => {
                 <button onClick={handleSearchByIngredient}>Search by Ingredient</button>
                 <button onClick={handleSearchByAlcoholic}>Alcoholic</button>
                 <button onClick={handleSearchByNonAlcoholic}>Non-Alcoholic</button>
-                {[...Array(26)].map((_, index) => (
-                    <button key={index} onClick={() => handleSearchByFirstLetter(String.fromCharCode(65 + index))}>
-                        {String.fromCharCode(65 + index)}
-                    </button>
-                ))}
+                <div>
+                    <select
+                        value={selectedFirstLetter}
+                        onChange={(e) => handleSearchByFirstLetter(e.target.value)}
+                    >
+                        <option value="">Search cocktail by first letter</option>
+                        {[...Array(26)].map((_, index) => (
+                            <option key={index} value={String.fromCharCode(65 + index)}>
+                                {String.fromCharCode(65 + index)}
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 <button onClick={handleSearchByGlass}>Cocktail Glass</button>
                 <button onClick={handleSearchCocktailByChampagneGlass}>Champagne flute</button>
             </div>
