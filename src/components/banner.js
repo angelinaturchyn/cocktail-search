@@ -1,6 +1,7 @@
 import React from 'react';
 import {CocktailSearch} from "./cocktailSearch";
-export const GameBanner = () => {
+
+export const Banner = () => {
     return (
         <div id="quiz-container">
         <h1>Cocktail Search </h1>
