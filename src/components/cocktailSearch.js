@@ -109,15 +109,15 @@ export const CocktailSearch = () => {
 
 
     return (
-        <div>
-            <div>
+        <div >
+            <div className="cocktailSearch">
                 <input type="text" value={searchTerm} onChange={handleInputChange}/>
-                <button onClick={handleSearchByName}>Search by Name</button>
-                <button onClick={handleSearchByIngredient}>Search by Ingredient</button>
-                <button onClick={handleSearchByAlcoholic}>Alcoholic</button>
-                <button onClick={handleSearchByNonAlcoholic}>Non-Alcoholic</button>
-                <div>
-                    <select
+                <button className="cocktailSearch" onClick={handleSearchByName}>Search by Name</button>
+                <button className="cocktailSearch" onClick={handleSearchByIngredient}>Search by Ingredient</button>
+                <button className="cocktailSearch" onClick={handleSearchByAlcoholic}>Alcoholic</button>
+                <button className="cocktailSearch" onClick={handleSearchByNonAlcoholic}>Non-Alcoholic</button>
+                <div >
+                    <select className="cocktailSearch"
                         value={selectedFirstLetter}
                         onChange={(e) => handleSearchByFirstLetter(e.target.value)}
                     >
@@ -129,8 +129,8 @@ export const CocktailSearch = () => {
                         ))}
                     </select>
                 </div>
-                <button onClick={handleSearchByGlass}>Cocktail Glass</button>
-                <button onClick={handleSearchCocktailByChampagneGlass}>Champagne flute</button>
+                <button className="cocktailSearch" onClick={handleSearchByGlass}>Cocktail Glass</button>
+                <button className="cocktailSearch" onClick={handleSearchCocktailByChampagneGlass}>Champagne flute</button>
             </div>
             {error ? (
                 <div>Whoops, try a different name</div>
