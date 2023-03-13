@@ -20,8 +20,9 @@ const LeftContainer = styled.div`
 const RightContainer = styled.div`
   width: 30%;
   color: wheat;
-  padding: 20px;
+  padding: 10%;
   font-size: 1.5rem;
+  font-family: 'Lora', serif;
 
   @media only screen and (max-width: 768px) {
        {
@@ -46,9 +47,12 @@ export const Banner = () => {
                     <img src={bannerImg} className="homeImg" alt="Banner Img" style={{ zIndex: '0' }}/>
                 </LeftContainer>
                 <RightContainer>
+                    <hr size="1" width="100%" color="white" align="center" />
                     <h1>Cocktail Hour</h1>
                     <p>Let's have some fun,
-                     and see what cocktails we can find!</p>
+                     and see what cocktails we can find!
+                    </p>
+                    <hr size="1" width="100%" color="white" align="center" />
                 </RightContainer>
             </TopContainer>
             {/*<BottomContainer>*/}
