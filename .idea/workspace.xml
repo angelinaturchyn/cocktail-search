@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c19e32a4-7c73-4999-9fb9-a1d4b5bb666d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/alexandra-golovac-kP8QyKwd1r0-unsplash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/katherine-sousa-ln2R1wJ8TCM-unsplash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/lefteris-kallergis-QsmdVT5pTMw-unsplash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mae-mu-YNMjGIPgD_c-unsplash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/nikita-tikhomirov-vAkIPzXOSOc-unsplash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/olena-sergienko-JjGLEN7T8xI-unsplash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/pylyp-sukhenko-ibh9J-fIgZU-unsplash.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/emily-andreeva-hXg4gGjIfhw-unsplash.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/no-revisions-gA81ZTsql68-unsplash.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/whatCocktailCanIMake.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/whatCocktailCanIMake.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cocktailSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cocktailSearch.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678490470349</updated>
       <workItem from="1678490471966" duration="3521000" />
-      <workItem from="1678512938136" duration="14871000" />
+      <workItem from="1678512938136" duration="23367000" />
     </task>
     <servers />
   </component>
