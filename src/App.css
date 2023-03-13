@@ -6,7 +6,8 @@
 }
 
 body {
-  background-color: #07342B;
+  background-color: black;
+  color: navajowhite;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -51,23 +52,54 @@ body {
   color: beige;
 }
 
-
-/*@media only screen and (max-width: 768px) {*/
-/*  .bannerText {*/
-/*    font-size: 30px;*/
-/*  }*/
-/*}*/
-
-/*@media only screen and (max-width: 1068px) {*/
-/*  .bannerText {*/
-/*    font-size: 35px;*/
-/*  }*/
-/*}*/
-
 .bannerDiv{
   width: 100%;
   position: center;
-  /*margin-left: 10%;*/
-  /*margin-right: 10%;*/
-  /*margin-top: 10%;*/
+
+}
+
+img{
+  height: auto;
+  width: 50%;
+}
+
+.cocktailSearchDiv{
+  text-align: center;
+  margin-bottom: 120px;
+  padding: 30px;
+}
+
+.cocktailSearch{
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  border-color: navajowhite;
+  background-color: black;
+  color: antiquewhite;
+  font-size: 1rem;
+  font-family: 'Lora', serif;
+}
+
+.cocktailSearchDropdown{
+  height: 40px;
+  width: 300px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 120px;
+  border-color: navajowhite;
+  background-color: black;
+  color: antiquewhite;
+  font-size: 1rem;
+}
+
+.searchInput {
+  height: 40px;
+  width: 300px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: 120px;
+  font-size: 1.3rem;
+  border-color: navajowhite;
+  background-color: black;
+  color: antiquewhite;
 }

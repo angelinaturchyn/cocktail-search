@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
+
 
 export const CocktailSearch = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -6,16 +7,30 @@ export const CocktailSearch = () => {
     const [error, setError] = useState("");
     const [selectedFirstLetter, setSelectedFirstLetter] = useState("");
 
+
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
     const searchCocktailByName = () => {
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.drinks) {
-                    setCocktails(data.drinks);
+        Promise.all([
+            fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`),
+            fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
+        ])
+            .then(([cocktailResponse, ingredientResponse]) =>
+                Promise.all([cocktailResponse.json(), ingredientResponse.json()]))
+            .then(([cocktailData, ingredientData]) => {
+                if (cocktailData.drinks) {
+                    const cocktails = cocktailData.drinks.map((cocktail) => {
+                        const ingredients = Object.keys(cocktail)
+                            .filter((key) => key.startsWith('strIngredient') && cocktail[key])
+                            .map((key) => {
+                                const ingredientName = cocktail[key];
+                                return ingredientData.drinks.find((item) => item.strIngredient1 === ingredientName);
+                            });
+                        return { ...cocktail, ingredients };
+                    });
+                    setCocktails(cocktails);
                     setError("");
                 } else {
                     setError("Whoops, try a different name");
@@ -23,6 +38,7 @@ export const CocktailSearch = () => {
             })
             .catch((error) => console.log(error));
     };
+
 
     const searchCocktailByIngredient = (ingredient) => {
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
@@ -109,17 +125,26 @@ export const CocktailSearch = () => {
 
 
     return (
-        <div >
-            <div className="cocktailSearch">
-                <input type="text" value={searchTerm} onChange={handleInputChange}/>
-                <button className="cocktailSearch" onClick={handleSearchByName}>Search by Name</button>
-                <button className="cocktailSearch" onClick={handleSearchByIngredient}>Search by Ingredient</button>
-                <button className="cocktailSearch" onClick={handleSearchByAlcoholic}>Alcoholic</button>
-                <button className="cocktailSearch" onClick={handleSearchByNonAlcoholic}>Non-Alcoholic</button>
+        <div className="cocktailSearchDiv">
+            <hr size="1" width="100%" color="white" align="center" />
+            <div >
+                <input type="text" className="searchInput" placeholder="Type here.." value={searchTerm} onChange={handleInputChange}/>
+            </div>
+            <div>
+                <button  className="cocktailSearch" onClick={handleSearchByName}>Search by Name</button>{' '}
+                <button className="cocktailSearch" onClick={handleSearchByIngredient}>Search by Ingredient</button>{' '}
+            </div>
+            <div>
+                <button className="cocktailSearch" onClick={handleSearchByAlcoholic}>Alcoholic</button>{' '}
+                <button className="cocktailSearch" onClick={handleSearchByNonAlcoholic}>Non-Alcoholic</button>{' '}
+            </div>
+            <div>
+                <button className="cocktailSearch" onClick={handleSearchByGlass}>Cocktail Glass</button>
+                <button className="cocktailSearch" onClick={handleSearchCocktailByChampagneGlass}>Champagne flute</button>
                 <div >
-                    <select className="cocktailSearch"
-                        value={selectedFirstLetter}
-                        onChange={(e) => handleSearchByFirstLetter(e.target.value)}
+                    <select className="cocktailSearchDropdown"
+                            value={selectedFirstLetter}
+                            onChange={(e) => handleSearchByFirstLetter(e.target.value)}
                     >
                         <option value="">Search cocktail by first letter</option>
                         {[...Array(26)].map((_, index) => (
@@ -129,8 +154,6 @@ export const CocktailSearch = () => {
                         ))}
                     </select>
                 </div>
-                <button className="cocktailSearch" onClick={handleSearchByGlass}>Cocktail Glass</button>
-                <button className="cocktailSearch" onClick={handleSearchCocktailByChampagneGlass}>Champagne flute</button>
             </div>
             {error ? (
                 <div>Whoops, try a different name</div>
@@ -138,13 +161,15 @@ export const CocktailSearch = () => {
                 <div>
                     {cocktails.map((cocktail) => (
                         <div key={cocktail.idDrink}>
-                            <h3>{cocktail.strDrink}</h3>
+                            <h3>Cocktail Name: {cocktail.strDrink}</h3>
                             <img src={cocktail.strDrinkThumb} alt="cocktail"/>
                             <p>Instructions: {cocktail.strInstructions}</p>
+                            {/*<p>Ingredients: {cocktail.strIngredient}</p>*/}
                         </div>
                     ))}
                 </div>
             )}
+            <hr size="1" width="100%" color="white" align="center" />
         </div>
     );
 }
