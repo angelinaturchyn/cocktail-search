@@ -1,5 +1,4 @@
 import React from 'react';
-import {CocktailSearch} from "./cocktailSearch";
 import bannerImg from "../assets/emily-andreeva-hXg4gGjIfhw-unsplash.jpg"
 import styled from 'styled-components';
 
@@ -8,7 +7,7 @@ const TopContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   height: auto;
-  //border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
   background-color: black;
   margin-bottom: 70px;
 `;
@@ -31,13 +30,6 @@ const RightContainer = styled.div`
   }
 `;
 
-const BottomContainer = styled.div`
-  background-color: wheat;
-  width: 100%;
-  height: 70px;
-`;
-
-
 export const Banner = () => {
     return (
 
@@ -55,9 +47,6 @@ export const Banner = () => {
                     <hr size="1" width="100%" color="white" align="center" />
                 </RightContainer>
             </TopContainer>
-            {/*<BottomContainer>*/}
-            {/*    <p>Bottom content goes here</p>*/}
-            {/*</BottomContainer>*/}
         </div>
     )
 }
