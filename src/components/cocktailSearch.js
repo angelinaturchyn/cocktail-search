@@ -15,19 +15,19 @@ export const CocktailSearch = () => {
     const searchCocktailByName = () => {
         Promise.all([
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`),
-            fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
+            fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"),
         ])
             .then(([cocktailResponse, ingredientResponse]) =>
-                Promise.all([cocktailResponse.json(), ingredientResponse.json()]))
+                Promise.all([cocktailResponse.json(), ingredientResponse.json()])
+            )
             .then(([cocktailData, ingredientData]) => {
-                if (cocktailData.drinks) {
+                if (cocktailData.drinks && cocktailData.drinks.length > 0) {
                     const cocktails = cocktailData.drinks.map((cocktail) => {
                         const ingredients = Object.keys(cocktail)
-                            .filter((key) => key.startsWith('strIngredient') && cocktail[key])
-                            .map((key) => {
-                                const ingredientName = cocktail[key];
-                                return ingredientData.drinks.find((item) => item.strIngredient1 === ingredientName);
-                            });
+                            .filter(
+                                (key) => key.startsWith("strIngredient") && cocktail[key]
+                            )
+                            .map((key) => cocktail[key]);
                         return { ...cocktail, ingredients };
                     });
                     setCocktails(cocktails);
@@ -127,24 +127,19 @@ export const CocktailSearch = () => {
     return (
         <div className="cocktailSearchDiv">
             <hr size="1" width="100%" color="white" align="center" />
-            <div >
-                <input type="text" className="searchInput" placeholder="Type here.." value={searchTerm} onChange={handleInputChange}/>
-            </div>
-            <div>
-                <button  className="cocktailSearch" onClick={handleSearchByName}>Search by Name</button>{' '}
-                <button className="cocktailSearch" onClick={handleSearchByIngredient}>Search by Ingredient</button>{' '}
-            </div>
-            <div>
-                <button className="cocktailSearch" onClick={handleSearchByAlcoholic}>Alcoholic</button>{' '}
-                <button className="cocktailSearch" onClick={handleSearchByNonAlcoholic}>Non-Alcoholic</button>{' '}
-            </div>
-            <div>
-                <button className="cocktailSearch" onClick={handleSearchByGlass}>Cocktail Glass</button>
-                <button className="cocktailSearch" onClick={handleSearchCocktailByChampagneGlass}>Champagne flute</button>
-                <div >
-                    <select className="cocktailSearchDropdown"
-                            value={selectedFirstLetter}
-                            onChange={(e) => handleSearchByFirstLetter(e.target.value)}
+            <div className="inputAndDropdown">
+                <input
+                    type="text"
+                    className="searchInput"
+                    placeholder="Type here.."
+                    value={searchTerm}
+                    onChange={handleInputChange}
+                />
+                <div>
+                    <select
+                        className="cocktailSearchDropdown"
+                        value={selectedFirstLetter}
+                        onChange={(e) => handleSearchByFirstLetter(e.target.value)}
                     >
                         <option value="">Search cocktail by first letter</option>
                         {[...Array(26)].map((_, index) => (
@@ -155,21 +150,50 @@ export const CocktailSearch = () => {
                     </select>
                 </div>
             </div>
-            {error ? (
-                <div>Whoops, try a different name</div>
-            ) : (
-                <div>
-                    {cocktails.map((cocktail) => (
-                        <div key={cocktail.idDrink}>
-                            <h3>Cocktail Name: {cocktail.strDrink}</h3>
-                            <img src={cocktail.strDrinkThumb} alt="cocktail"/>
-                            <p>Instructions: {cocktail.strInstructions}</p>
-                            {/*<p>Ingredients: {cocktail.strIngredient}</p>*/}
-                        </div>
-                    ))}
-                </div>
-            )}
-            <hr size="1" width="100%" color="white" align="center" />
+            <div>
+                <button className="cocktailSearch" onClick={handleSearchByName}>
+                    Search by Name
+                </button>{" "}
+                <button className="cocktailSearch" onClick={handleSearchByIngredient}>
+                    Search by Ingredient
+                </button>{" "}
+                <button className="cocktailSearch" onClick={handleSearchByAlcoholic}>
+                    Alcoholic
+                </button>{" "}
+                <button className="cocktailSearch" onClick={handleSearchByNonAlcoholic}>
+                    Non Alcoholic
+                </button>{" "}
+                <button className="cocktailSearch" onClick={handleSearchByGlass}>
+                    Cocktail Glass
+                </button>{" "}
+                <button
+                    className="cocktailSearch"
+                    onClick={handleSearchCocktailByChampagneGlass}
+                >
+                    Champagne Glass
+                </button>{" "}
+            </div>
+            {error && <div className="error">{error}</div>}
+            {cocktails && cocktails.length > 0 &&
+                cocktails.map((cocktail) => (
+                    <div key={cocktail.idDrink} className="cocktailDetails">
+                        <h2>{cocktail.strDrink}</h2>
+                        <p>{cocktail.strInstructions}</p>
+                        <h3>Ingredients:</h3>
+                        <ul>
+                            {cocktail.ingredients.map(
+                                (ingredient, index) =>
+                                    ingredient && <li key={index}>{ingredient}</li>
+                            )}
+                        </ul>
+                        <img
+                            src={cocktail.strDrinkThumb}
+                            alt={cocktail.strDrink}
+                            className="cocktailImage"
+                        />
+                    </div>
+                ))}
         </div>
     );
+
 }
