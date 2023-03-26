@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 
 const SearchButton = styled(motion.button)`
   padding: 1rem 1.4rem;
-  font-size: 1.2rem;
+  font-size: 2rem;
   border: 1px solid antiquewhite;
   color: antiquewhite;
   background-color: black;
@@ -14,22 +14,68 @@ const SearchButton = styled(motion.button)`
   border-radius: 8px;
   margin-bottom: 120px;
   width: 300px;
+  font-family: 'Pathway Gothic One', sans-serif;
+  margin-left: 10px;
 `
 
 const CocktailDetails = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 90px;
+  font-family: 'Pathway Gothic One', sans-serif;
+  
+  
+  h1 {
+    font-size: 4.5rem;
+    @media only screen and (max-width: 768px) {
+     {
+      font-size: 3rem;
+     }
+    }
+  }
+  h2 {
+    font-size: 2.7rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+  }
 `;
 
 const LeftContainer = styled.div`
-  width: 60%;
+  width: 50%;
+
+  @media only screen and (max-width: 768px) {
+   {
+    width: 100%;
+    }
+  }
+ 
 `;
 
 const CocktailImage = styled.img` 
-  width: 40%;
+  width: 50%;
   height: auto;
   margin-left: auto;
+  margin-bottom: 90px;
+  
+  @media only screen and (max-width: 768px) {
+   {
+    width: 100%;
+   }
+  }
 `;
+
+const BannerText = styled.div`
+  font-size: 3.5rem;
+  font-family: 'Pathway Gothic One', sans-serif;
+  margin-top: 100px;
+
+  @media only screen and (max-width: 768px) {
+    {
+    font-size: 2.5rem;
+    }
+  }
+`
 
 export const CocktailSearch = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -62,7 +108,7 @@ export const CocktailSearch = () => {
                     setCocktails(cocktails);
                     setError("");
                 } else {
-                    setError("Whoops, try a different name");
+                    setError("Whoops, try a different name, or ingredient");
                 }
             })
             .catch((error) => console.log(error));
@@ -77,6 +123,11 @@ export const CocktailSearch = () => {
     return (
         <div className="cocktailSearchDiv">
             <hr size="1" width="100%" color="white" align="center" />
+
+            <BannerText>
+               You can search for a cocktail by it's name or ingredient
+            </BannerText>
+
                 <input
                     type="text"
                     className="searchInput"
@@ -84,7 +135,6 @@ export const CocktailSearch = () => {
                     value={searchTerm}
                     onChange={handleInputChange}
                 />
-
 
                 <SearchButton  onClick={handleSearchByName}
                                style={{cursor:'pointer'}}
@@ -109,8 +159,8 @@ export const CocktailSearch = () => {
 
                     <CocktailDetails key={cocktail.idDrink} className="cocktailDetails">
                         <LeftContainer>
-                        <h2>Cocktail Name: {cocktail.strDrink}</h2>
-                        <h2>Cocktail Instructions:</h2>
+                        <h1> {cocktail.strDrink}</h1>
+                        <h2>Instructions:</h2>
                         <h3>{cocktail.strInstructions}</h3>
                         <h2>Ingredients:</h2>
                         <h3>
@@ -120,11 +170,14 @@ export const CocktailSearch = () => {
                             )}
                         </h3>
                             </LeftContainer>
+
                         <CocktailImage
+
                             src={cocktail.strDrinkThumb}
                             alt={cocktail.strDrink}
                             className="cocktailImage"
                         />
+                        <hr size="1" width="100%" color="white" align="center" />
                     </CocktailDetails>
 
                 ))}

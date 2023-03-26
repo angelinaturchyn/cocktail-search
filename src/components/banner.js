@@ -22,6 +22,16 @@ const RightContainer = styled.div`
   padding: 10%;
   font-size: 1.5rem;
   font-family: 'Lora', serif;
+  
+  h1 {
+    font-size: 4rem;
+
+    @media only screen and (max-width: 768px) {
+    {
+      font-size: 2.5rem
+     }
+    }
+  }
 
   @media only screen and (max-width: 768px) {
        {
