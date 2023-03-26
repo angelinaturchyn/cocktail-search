@@ -13,6 +13,7 @@ const SearchButton = styled(motion.button)`
   cursor: pointer;
   border-radius: 8px;
   margin-bottom: 120px;
+  width: 300px;
 `
 
 export const CocktailSearch = () => {
@@ -74,7 +75,7 @@ export const CocktailSearch = () => {
                                style={{cursor:'pointer'}}
                                whileHover={{
                                    scale: 1.05,
-                                   backgroundColor: '#4B0082' }}
+                                   backgroundColor: '#21083d' }}
                                whileTap={{
                                    scale: 0.95,
                                    backgroundColor: '#1e0082',
@@ -82,22 +83,23 @@ export const CocktailSearch = () => {
 
                                }}
                 >
-                    Search cocktail by name or ingredient
+                    Search cocktail
                 </SearchButton>
 
             {error && <div className="error">{error}</div>}
             {cocktails && cocktails.length > 0 &&
                 cocktails.map((cocktail) => (
                     <div key={cocktail.idDrink} className="cocktailDetails">
-                        <h2>{cocktail.strDrink}</h2>
-                        <p>{cocktail.strInstructions}</p>
-                        <h3>Ingredients:</h3>
-                        <ul>
+                        <h1>Cocktail Name: {cocktail.strDrink}</h1>
+                        <h2>Cocktail Instructions:</h2>
+                        <h3>{cocktail.strInstructions}</h3>
+                        <h2>Ingredients:</h2>
+                        <h3>
                             {cocktail.ingredients.map(
                                 (ingredient, index) =>
                                     ingredient && <li key={index}>{ingredient}</li>
                             )}
-                        </ul>
+                        </h3>
                         <img
                             src={cocktail.strDrinkThumb}
                             alt={cocktail.strDrink}
