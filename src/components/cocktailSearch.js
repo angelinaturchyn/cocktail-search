@@ -16,6 +16,21 @@ const SearchButton = styled(motion.button)`
   width: 300px;
 `
 
+const CocktailDetails = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const LeftContainer = styled.div`
+  width: 60%;
+`;
+
+const CocktailImage = styled.img` 
+  width: 40%;
+  height: auto;
+  margin-left: auto;
+`;
+
 export const CocktailSearch = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [cocktails, setCocktails] = useState([]);
@@ -75,11 +90,13 @@ export const CocktailSearch = () => {
                                style={{cursor:'pointer'}}
                                whileHover={{
                                    scale: 1.05,
-                                   backgroundColor: '#21083d' }}
+                                   backgroundColor: '#f5f7e1',
+                                   color: '#000'
+                               }}
                                whileTap={{
                                    scale: 0.95,
-                                   backgroundColor: '#1e0082',
-                                   color: '#fff'
+                                   backgroundColor: '#b3b59c',
+                                   color: '#000'
 
                                }}
                 >
@@ -89,8 +106,10 @@ export const CocktailSearch = () => {
             {error && <div className="error">{error}</div>}
             {cocktails && cocktails.length > 0 &&
                 cocktails.map((cocktail) => (
-                    <div key={cocktail.idDrink} className="cocktailDetails">
-                        <h1>Cocktail Name: {cocktail.strDrink}</h1>
+
+                    <CocktailDetails key={cocktail.idDrink} className="cocktailDetails">
+                        <LeftContainer>
+                        <h2>Cocktail Name: {cocktail.strDrink}</h2>
                         <h2>Cocktail Instructions:</h2>
                         <h3>{cocktail.strInstructions}</h3>
                         <h2>Ingredients:</h2>
@@ -100,15 +119,22 @@ export const CocktailSearch = () => {
                                     ingredient && <li key={index}>{ingredient}</li>
                             )}
                         </h3>
-                        <img
+                            </LeftContainer>
+                        <CocktailImage
                             src={cocktail.strDrinkThumb}
                             alt={cocktail.strDrink}
                             className="cocktailImage"
                         />
-                    </div>
+                    </CocktailDetails>
+
                 ))}
+
+
             <hr size="1" width="100%" color="white" align="center" />
+
         </div>
     );
 
 }
+
+
