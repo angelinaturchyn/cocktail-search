@@ -69,39 +69,10 @@ img{
   padding: 40px;
 }
 
-.inputAndDropdown{
-
-}
-
-.cocktailSearch{
-  height: 50px;
-  width: 400px;
-  border-radius: 10px;
-  border-color: navajowhite;
-  background-color: black;
-  color: antiquewhite;
-  font-size: 1.2rem;
-  font-family: 'Lora', serif;
-  margin-bottom: 15px;
-  margin-right: 10px;
-}
-
-.cocktailSearchDropdown{
-  height: 50px;
-  width: 300px;
-  border-radius: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  border-color: navajowhite;
-  background-color: black;
-  color: antiquewhite;
-  font-size: 1.2rem;
-  padding: 10px;
-}
 
 .searchInput {
   height: 30px;
-  width: 300px;
+  width: 400px;
   border-radius: 10px;
   margin-top: 120px;
   font-size: 1.3rem;

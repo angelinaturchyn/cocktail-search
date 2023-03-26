@@ -1,11 +1,24 @@
 import React, { useState} from "react";
+import styled from 'styled-components'
+import { motion } from "framer-motion"
 
+
+
+const SearchButton = styled(motion.button)`
+  padding: 1rem 1.4rem;
+  font-size: 1.2rem;
+  border: 1px solid antiquewhite;
+  color: antiquewhite;
+  background-color: black;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 120px;
+`
 
 export const CocktailSearch = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [cocktails, setCocktails] = useState([]);
     const [error, setError] = useState("");
-    const [selectedFirstLetter, setSelectedFirstLetter] = useState("");
 
 
     const handleInputChange = (event) => {
@@ -40,94 +53,14 @@ export const CocktailSearch = () => {
     };
 
 
-    const searchCocktailByIngredient = (ingredient) => {
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.drinks) {
-                    setCocktails(data.drinks);
-                    setError("");
-                } else {
-                    setError("Whoops, try a different name");
-                }
-            })
-            .catch((error) => console.log(error));
-    };
-
-    const searchCocktailByCategory = (category) => {
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${category}`)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.drinks) {
-                    setCocktails(data.drinks);
-                    setError("");
-                } else {
-                    setError("Whoops, try a different name");
-                }
-            })
-            .catch((error) => console.log(error));
-    };
-    const searchCocktailByFirstLetter = (letter) => {
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.drinks) {
-                    setCocktails(data.drinks);
-                    setError("");
-                } else {
-                    setError("Whoops, try a different name");
-                }
-            })
-            .catch((error) => console.log(error));
-    };
-
-    const searchCocktailByGlass = (glass) => {
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glass}`)
-            .then((response) => response.json())
-            .then((data) => setCocktails(data.drinks))
-            .catch((error) => console.log(error));
-    };
-
-    const searchCocktailByChampagneGlass = (glass) => {
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glass}`)
-            .then((response) => response.json())
-            .then((data) => setCocktails(data.drinks))
-            .catch((error) => console.log(error));
-    };
-
     const handleSearchByName = () => {
         searchCocktailByName();
-    };
-
-    const handleSearchByIngredient = () => {
-        searchCocktailByIngredient(searchTerm);
-    };
-
-    const handleSearchByAlcoholic = () => {
-        searchCocktailByCategory("Alcoholic");
-    };
-
-    const handleSearchByNonAlcoholic = () => {
-        searchCocktailByCategory("Non_Alcoholic");
-    };
-
-    const handleSearchByFirstLetter = (letter) => {
-        searchCocktailByFirstLetter(letter);
-    };
-
-    const handleSearchByGlass = () => {
-        searchCocktailByGlass("Cocktail_glass");
-    };
-
-    const handleSearchCocktailByChampagneGlass = () => {
-        searchCocktailByChampagneGlass("Champagne_flute");
     };
 
 
     return (
         <div className="cocktailSearchDiv">
             <hr size="1" width="100%" color="white" align="center" />
-            <div className="inputAndDropdown">
                 <input
                     type="text"
                     className="searchInput"
@@ -135,44 +68,23 @@ export const CocktailSearch = () => {
                     value={searchTerm}
                     onChange={handleInputChange}
                 />
-                <div>
-                    <select
-                        className="cocktailSearchDropdown"
-                        value={selectedFirstLetter}
-                        onChange={(e) => handleSearchByFirstLetter(e.target.value)}
-                    >
-                        <option value="">Search cocktail by first letter</option>
-                        {[...Array(26)].map((_, index) => (
-                            <option key={index} value={String.fromCharCode(65 + index)}>
-                                {String.fromCharCode(65 + index)}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            </div>
-            <div>
-                <button className="cocktailSearch" onClick={handleSearchByName}>
-                    Search by Name
-                </button>{" "}
-                <button className="cocktailSearch" onClick={handleSearchByIngredient}>
-                    Search by Ingredient
-                </button>{" "}
-                <button className="cocktailSearch" onClick={handleSearchByAlcoholic}>
-                    Alcoholic
-                </button>{" "}
-                <button className="cocktailSearch" onClick={handleSearchByNonAlcoholic}>
-                    Non Alcoholic
-                </button>{" "}
-                <button className="cocktailSearch" onClick={handleSearchByGlass}>
-                    Cocktail Glass
-                </button>{" "}
-                <button
-                    className="cocktailSearch"
-                    onClick={handleSearchCocktailByChampagneGlass}
+
+
+                <SearchButton  onClick={handleSearchByName}
+                               style={{cursor:'pointer'}}
+                               whileHover={{
+                                   scale: 1.05,
+                                   backgroundColor: '#4B0082' }}
+                               whileTap={{
+                                   scale: 0.95,
+                                   backgroundColor: '#1e0082',
+                                   color: '#fff'
+
+                               }}
                 >
-                    Champagne Glass
-                </button>{" "}
-            </div>
+                    Search cocktail by name or ingredient
+                </SearchButton>
+
             {error && <div className="error">{error}</div>}
             {cocktails && cocktails.length > 0 &&
                 cocktails.map((cocktail) => (
@@ -193,6 +105,7 @@ export const CocktailSearch = () => {
                         />
                     </div>
                 ))}
+            <hr size="1" width="100%" color="white" align="center" />
         </div>
     );
 
