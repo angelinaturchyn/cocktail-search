@@ -23,28 +23,40 @@ const CocktailDetails = styled.div`
   flex-wrap: wrap;
   margin-bottom: 90px;
   font-family: 'Pathway Gothic One', sans-serif;
-  
+  text-align: left;
   
   h1 {
-    font-size: 4.5rem;
-    @media only screen and (max-width: 768px) {
+    font-size: 7rem;
+      @media only screen and (max-width: 768px) {
      {
-      font-size: 3rem;
+      font-size: 5rem;
      }
     }
   }
   h2 {
-    font-size: 2.7rem;
+    font-size: 2rem;
+      @media only screen and (max-width: 768px) {
+    {
+      font-size: 1.7rem;
+     }
+    }
+    
   }
   h3 {
     font-size: 1.8rem;
+
+     @media only screen and (max-width: 768px) {
+     {
+      font-size: 1.3rem;
+     }
+    }
   }
 `;
 
 const LeftContainer = styled.div`
   width: 50%;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 980px) {
    {
     width: 100%;
     }
@@ -58,7 +70,7 @@ const CocktailImage = styled.img`
   margin-left: auto;
   margin-bottom: 90px;
   
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 980px) {
    {
     width: 100%;
    }
@@ -130,13 +142,14 @@ export const CocktailSearch = () => {
 
                 <input
                     type="text"
+
                     className="searchInput"
                     placeholder="Type here.."
                     value={searchTerm}
                     onChange={handleInputChange}
                 />
-
-                <SearchButton  onClick={handleSearchByName}
+                     <SearchButton
+                               onClick={handleSearchByName}
                                style={{cursor:'pointer'}}
                                whileHover={{
                                    scale: 1.05,
@@ -154,9 +167,9 @@ export const CocktailSearch = () => {
                 </SearchButton>
 
             {error && <div className="error">{error}</div>}
+
             {cocktails && cocktails.length > 0 &&
                 cocktails.map((cocktail) => (
-
                     <CocktailDetails key={cocktail.idDrink} className="cocktailDetails">
                         <LeftContainer>
                         <h1> {cocktail.strDrink}</h1>
@@ -172,17 +185,14 @@ export const CocktailSearch = () => {
                             </LeftContainer>
 
                         <CocktailImage
-
                             src={cocktail.strDrinkThumb}
                             alt={cocktail.strDrink}
                             className="cocktailImage"
                         />
-                        <hr size="1" width="100%" color="white" align="center" />
+                        <hr size="1" width="70%" color="white" align="center" />
                     </CocktailDetails>
 
                 ))}
-
-
             <hr size="1" width="100%" color="white" align="center" />
 
         </div>

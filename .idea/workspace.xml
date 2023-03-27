@@ -7,7 +7,10 @@
     <list default="true" id="c19e32a4-7c73-4999-9fb9-a1d4b5bb666d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/cocktailSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cocktailSearch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/whatCocktailCanIMake.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/whatCocktailCanIMake.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +25,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dropdown-and-list" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -82,6 +90,7 @@
       <workItem from="1679691339691" duration="65000" />
       <workItem from="1679691561188" duration="489000" />
       <workItem from="1679692643945" duration="3592000" />
+      <workItem from="1679862002223" duration="14759000" />
     </task>
     <servers />
   </component>

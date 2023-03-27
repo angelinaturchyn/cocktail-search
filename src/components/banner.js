@@ -21,10 +21,10 @@ const RightContainer = styled.div`
   color: wheat;
   padding: 10%;
   font-size: 1.5rem;
-  font-family: 'Lora', serif;
+  font-family: 'Pathway Gothic One', sans-serif;
   
   h1 {
-    font-size: 4rem;
+    font-size: 5rem;
 
     @media only screen and (max-width: 768px) {
     {
@@ -51,9 +51,9 @@ export const Banner = () => {
                 <RightContainer>
                     <hr size="1" width="100%" color="white" align="center" />
                     <h1>Cocktail Hour</h1>
-                    <p>Let's have some fun,
+                    <h3>Let's have some fun,
                      and see what cocktails we can find!
-                    </p>
+                    </h3>
                     <hr size="1" width="100%" color="white" align="center" />
                 </RightContainer>
             </TopContainer>
