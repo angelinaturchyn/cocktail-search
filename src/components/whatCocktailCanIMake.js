@@ -148,7 +148,7 @@ export const WhatCocktailCanIMake = () => {
                         </div>
                     ))}
                 </div>
-                <h1 style={{marginTop:"20px"}}>Cocktails you can make:</h1>
+                <h1 style={{marginTop:"20px"}}>Cocktails you can mix:</h1>
                 <ul>
                     {cocktails.map((cocktail) => (
                         <motion.div key={cocktail.idDrink} whileHover={{ scale: 1.05 }}>

@@ -137,7 +137,7 @@ export const CocktailSearch = () => {
             <hr size="1" width="100%" color="white" align="center" />
 
             <BannerText>
-               You can search for a cocktail by it's name or ingredient
+               You can search for a cocktail by name or ingredient
             </BannerText>
 
                 <input
