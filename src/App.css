@@ -54,52 +54,34 @@ body {
 
 .bannerDiv{
   width: 100%;
-  position: center;
+  /*position: center;*/
 
 }
 
-img{
+.cocktailImage{
   height: auto;
   width: 50%;
+  /*text-align: left;*/
 }
 
 .cocktailSearchDiv{
   text-align: center;
   margin-bottom: 120px;
-  padding: 30px;
+  padding: 40px;
 }
 
-.cocktailSearch{
-  height: 40px;
-  width: 200px;
-  border-radius: 10px;
-  border-color: navajowhite;
-  background-color: black;
-  color: antiquewhite;
-  font-size: 1rem;
-  font-family: 'Lora', serif;
-}
-
-.cocktailSearchDropdown{
-  height: 40px;
-  width: 300px;
-  border-radius: 10px;
-  margin-top: 10px;
-  margin-bottom: 120px;
-  border-color: navajowhite;
-  background-color: black;
-  color: antiquewhite;
-  font-size: 1rem;
-}
 
 .searchInput {
-  height: 40px;
-  width: 300px;
+  height: 45px;
+  width: 280px;
   border-radius: 10px;
-  margin-bottom: 10px;
   margin-top: 120px;
-  font-size: 1.3rem;
+  font-size: 2rem;
   border-color: navajowhite;
   background-color: black;
   color: antiquewhite;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-family: 'Pathway Gothic One', sans-serif;
 }
+
